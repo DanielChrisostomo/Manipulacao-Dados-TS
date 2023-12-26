@@ -11,6 +11,7 @@ async function handleData() {
   const transacoes = data.map(normalizarTransacao);
   preencherTabela(transacoes);
   preencherEstatisticas(transacoes);
+  // console.log(data);
 }
 
 function preencherLista(lista: CountList, containerId: string): void {
@@ -34,6 +35,11 @@ function preencherEstatisticas(transacoes: Transacao[]): void {
       style: 'currency',
       currency: 'BRL',
     });
+  }
+
+  const diaElement = document.querySelector<HTMLElement>('#dia span');
+  if (diaElement) {
+    diaElement.innerText = data.melhorDia[0];
   }
 }
 
